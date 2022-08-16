@@ -1,0 +1,15 @@
+.activeFilter {
+    color: #159911;
+}
+
+.errorText {
+    color: #159911;
+}
+
+.errorInput {
+    border: 1px solid #159911;
+}
+
+.checkedTask {
+    opacity: .5;
+}
