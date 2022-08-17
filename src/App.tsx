@@ -69,8 +69,17 @@ function App() {
 
         setObjTasks({...objTasks, [sampleNewTodolists.id]: []})
     }
-
-
+    function changeTaskTitle(taskId: string, newTitle: string, objTaskId: string) {
+        setObjTasks({...objTasks, [objTaskId]: objTasks[objTaskId].map(t => t.id === taskId ? {...t, title: newTitle} : t)})
+    }
+    function changeTitleTodolists(newTitle: string, objTaskId: string) {
+      let todo =  todolists.find(tl => tl.id === objTaskId)
+        if (todo){
+            todo.title = newTitle
+            setTodolists([...todolists])
+        }
+    }
+    
     return (
         <div className="App">
             <AddItemForm id={"sdf"} addItem={addTodolists}/>
@@ -95,6 +104,8 @@ function App() {
                             addTask={addTask}
                             checkedTask={checkedTask}
                             deleteTodolists={deleteTodolists}
+                            changeTaskTitle={changeTaskTitle}
+                            changeTitleTodolists={changeTitleTodolists}
                         />
                     )
                 })
