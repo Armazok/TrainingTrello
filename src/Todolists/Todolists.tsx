@@ -1,6 +1,7 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import React, {ChangeEvent} from 'react';
 import {FilterType, TasksType} from "../App";
 import s from "./Todolist.module.css"
+import {AddItemForm} from "./AddItemForm";
 
 type TodolistType = {
     id: string
@@ -20,9 +21,9 @@ export const Todolists: React.FC<TodolistType> = ({
                                                       deleteTasks,
                                                       changeFilter,
                                                       filter,
-                                                      addTask,
                                                       checkedTask,
                                                       id,
+                                                      addTask,
                                                       deleteTodolists
                                                   }) => {
 
@@ -33,30 +34,13 @@ export const Todolists: React.FC<TodolistType> = ({
     const styleActiveFilterActive = () => filter === "active" ? s.activeFilter : ""
     const styleActiveFilterCompleted = () => filter === "completed" ? s.activeFilter : ""
 
-    let [title, setTitle] = useState("")
-    let [error, setError] = useState<string | null>(null)
-    const onClickAddTask = () => {
-        if (title.trim() !== "") {
-            addTask(title, id)
-            setTitle("")
-        } else {
-            setError("Maybe you?")
-        }
-
-
-    }
-    const onChangeAddTask = (e: ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.currentTarget.value)
-        setError("")
-    }
-    const onKeyDownAddTask = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter") {
-            onClickAddTask()
-        }
-    }
 
     const onClickRemoveTodolists = () => {
         deleteTodolists(id)
+    }
+
+    const addTasks = (title: string) => {
+        addTask(title, id)
     }
 
     return (
@@ -64,16 +48,7 @@ export const Todolists: React.FC<TodolistType> = ({
             <h3>{titleTodolist}
                 <button onClick={onClickRemoveTodolists}>X</button>
             </h3>
-            <div>
-                <input
-                    value={title}
-                    onChange={onChangeAddTask}
-                    onKeyDown={onKeyDownAddTask}
-                    className={error ? s.errorInput : ""}
-                />
-                <button onClick={onClickAddTask}>+</button>
-                {error && <div className={s.errorText}>{error}</div>}
-            </div>
+            <AddItemForm id={id} addItem={addTasks}/>
             <ul>
                 {
                     tasks.map((t) => {
@@ -101,3 +76,5 @@ export const Todolists: React.FC<TodolistType> = ({
         </div>
     );
 };
+
+
