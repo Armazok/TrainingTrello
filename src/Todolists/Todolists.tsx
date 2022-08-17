@@ -13,7 +13,9 @@ type TodolistType = {
     filter: FilterType
     addTask: (title: string, objTaskId: string) => void
     checkedTask: (taskId: string, isDone: boolean, objTaskId: string) => void
+    changeTaskTitle: (taskId: string, newTitle: string, objTaskId: string) => void
     deleteTodolists: (objTaskId: string) => void
+    changeTitleTodolists: (idTodolists: string, newTitle: string) => void
 }
 
 export const Todolists: React.FC<TodolistType> = ({
@@ -25,7 +27,9 @@ export const Todolists: React.FC<TodolistType> = ({
                                                       checkedTask,
                                                       id,
                                                       addTask,
-                                                      deleteTodolists
+                                                      deleteTodolists,
+                                                      changeTaskTitle,
+                                                      changeTitleTodolists
                                                   }) => {
 
     const onClickAll = () => changeFilter("all", id)
@@ -35,27 +39,36 @@ export const Todolists: React.FC<TodolistType> = ({
     const styleActiveFilterActive = () => filter === "active" ? s.activeFilter : ""
     const styleActiveFilterCompleted = () => filter === "completed" ? s.activeFilter : ""
 
-
     const onClickRemoveTodolists = () => {
         deleteTodolists(id)
     }
-
     const addTasks = (title: string) => {
         addTask(title, id)
     }
 
+    const replacementTitleTodolists = (newTitleTodolists: string) => {
+        changeTitleTodolists(newTitleTodolists, id)
+    }
+
     return (
         <div>
-            <h3>{titleTodolist}
+            <h3>
+                <EditableSpan title={titleTodolist} onChange={replacementTitleTodolists}/>
                 <button onClick={onClickRemoveTodolists}>X</button>
             </h3>
-            <AddItemForm id={id} addItem={addTasks}/>
+            <AddItemForm
+                id={id}
+                addItem={addTasks}
+            />
             <ul>
                 {
                     tasks.map((t) => {
                         const onClickDeleteTasks = () => deleteTasks(t.id, id)
                         const onChangeCheckedBox = (e: ChangeEvent<HTMLInputElement>) => {
                             checkedTask(t.id, e.currentTarget.checked, id)
+                        }
+                        const onChangeTitleTask = (newValue: string) => {
+                            changeTaskTitle(t.id, newValue, id)
                         }
                         return (
                             <li className={t.isDone ? s.checkedTask : ""} key={t.id}>
@@ -64,7 +77,10 @@ export const Todolists: React.FC<TodolistType> = ({
                                     checked={t.isDone}
                                     onChange={onChangeCheckedBox}
                                 />
-                                <EditableSpan title={t.title}/>
+                                <EditableSpan
+                                    title={t.title}
+                                    onChange={onChangeTitleTask}
+                                />
                                 <button onClick={onClickDeleteTasks}>X</button>
                             </li>
                         )
