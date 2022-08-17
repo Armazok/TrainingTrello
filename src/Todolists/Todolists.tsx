@@ -3,13 +3,15 @@ import {FilterType, TasksType} from "../App";
 import s from "./Todolist.module.css"
 
 type TodolistType = {
+    id: string
     titleTodolist: string
     tasks: TasksType[]
-    deleteTasks: (tasksId: string) => void
-    changeFilter: (value: FilterType) => void
+    deleteTasks: (tasksId: string, objTaskId: string) => void
+    changeFilter: (value: FilterType, objTaskId: string) => void
     filter: FilterType
-    addTask: (title: string) => void
-    checkedTask: (taskId: string, isDone: boolean) => void
+    addTask: (title: string, objTaskId: string) => void
+    checkedTask: (taskId: string, isDone: boolean, objTaskId: string) => void
+    deleteTodolists: (objTaskId: string) => void
 }
 
 export const Todolists: React.FC<TodolistType> = ({
@@ -19,12 +21,14 @@ export const Todolists: React.FC<TodolistType> = ({
                                                       changeFilter,
                                                       filter,
                                                       addTask,
-                                                      checkedTask
+                                                      checkedTask,
+                                                      id,
+                                                      deleteTodolists
                                                   }) => {
 
-    const onClickAll = () => changeFilter("all")
-    const onClickActive = () => changeFilter("active")
-    const onClickCompleted = () => changeFilter("completed")
+    const onClickAll = () => changeFilter("all", id)
+    const onClickActive = () => changeFilter("active", id)
+    const onClickCompleted = () => changeFilter("completed", id)
     const styleActiveFilterAll = () => filter === "all" ? s.activeFilter : ""
     const styleActiveFilterActive = () => filter === "active" ? s.activeFilter : ""
     const styleActiveFilterCompleted = () => filter === "completed" ? s.activeFilter : ""
@@ -33,7 +37,7 @@ export const Todolists: React.FC<TodolistType> = ({
     let [error, setError] = useState<string | null>(null)
     const onClickAddTask = () => {
         if (title.trim() !== "") {
-            addTask(title)
+            addTask(title, id)
             setTitle("")
         } else {
             setError("Maybe you?")
@@ -51,9 +55,15 @@ export const Todolists: React.FC<TodolistType> = ({
         }
     }
 
+    const onClickRemoveTodolists = () => {
+        deleteTodolists(id)
+    }
+
     return (
         <div>
-            <h3>{titleTodolist}</h3>
+            <h3>{titleTodolist}
+                <button onClick={onClickRemoveTodolists}>X</button>
+            </h3>
             <div>
                 <input
                     value={title}
@@ -67,9 +77,9 @@ export const Todolists: React.FC<TodolistType> = ({
             <ul>
                 {
                     tasks.map((t) => {
-                        const onClickDeleteTasks = () => deleteTasks(t.id)
+                        const onClickDeleteTasks = () => deleteTasks(t.id, id)
                         const onChangeCheckedBox = (e: ChangeEvent<HTMLInputElement>) => {
-                            checkedTask(t.id, e.currentTarget.checked)
+                            checkedTask(t.id, e.currentTarget.checked, id)
                         }
                         return (
                             <li className={t.isDone ? s.checkedTask : ""} key={t.id}><input
