@@ -2,6 +2,7 @@ import React, {ChangeEvent} from 'react';
 import {FilterType, TasksType} from "../App";
 import s from "./Todolist.module.css"
 import {AddItemForm} from "./AddItemForm";
+import {EditableSpan} from "./EditableSpan";
 
 type TodolistType = {
     id: string
@@ -57,11 +58,13 @@ export const Todolists: React.FC<TodolistType> = ({
                             checkedTask(t.id, e.currentTarget.checked, id)
                         }
                         return (
-                            <li className={t.isDone ? s.checkedTask : ""} key={t.id}><input
-                                type="checkbox"
-                                checked={t.isDone}
-                                onChange={onChangeCheckedBox}
-                            /> <span>{t.title}</span>
+                            <li className={t.isDone ? s.checkedTask : ""} key={t.id}>
+                                <input
+                                    type="checkbox"
+                                    checked={t.isDone}
+                                    onChange={onChangeCheckedBox}
+                                />
+                                <EditableSpan title={t.title}/>
                                 <button onClick={onClickDeleteTasks}>X</button>
                             </li>
                         )
@@ -76,5 +79,13 @@ export const Todolists: React.FC<TodolistType> = ({
         </div>
     );
 };
+
+
+
+
+
+
+
+
 
 
