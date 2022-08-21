@@ -3,6 +3,8 @@ import {FilterType, TasksType} from "../App";
 import s from "./Todolist.module.css"
 import {AddItemForm} from "./AddItemForm";
 import {EditableSpan} from "./EditableSpan";
+import {Button, Checkbox, IconButton} from "@mui/material";
+import {Delete} from "@mui/icons-material";
 
 type TodolistType = {
     id: string
@@ -35,9 +37,9 @@ export const Todolists: React.FC<TodolistType> = ({
     const onClickAll = () => changeFilter("all", id)
     const onClickActive = () => changeFilter("active", id)
     const onClickCompleted = () => changeFilter("completed", id)
-    const styleActiveFilterAll = () => filter === "all" ? s.activeFilter : ""
-    const styleActiveFilterActive = () => filter === "active" ? s.activeFilter : ""
-    const styleActiveFilterCompleted = () => filter === "completed" ? s.activeFilter : ""
+    const styleActiveFilterAll = () => filter === "all" ? "contained" : "text"
+    const styleActiveFilterActive = () => filter === "active" ? "contained" : "text"
+    const styleActiveFilterCompleted = () => filter === "completed" ? "contained" : "text"
 
     const onClickRemoveTodolists = () => {
         deleteTodolists(id)
@@ -54,13 +56,15 @@ export const Todolists: React.FC<TodolistType> = ({
         <div>
             <h3>
                 <EditableSpan title={titleTodolist} onChange={replacementTitleTodolists}/>
-                <button onClick={onClickRemoveTodolists}>X</button>
+                <IconButton onClick={onClickRemoveTodolists}>
+                    <Delete/>
+                </IconButton>
             </h3>
             <AddItemForm
                 id={id}
                 addItem={addTasks}
             />
-            <ul>
+            <div>
                 {
                     tasks.map((t) => {
                         const onClickDeleteTasks = () => deleteTasks(t.id, id)
@@ -71,9 +75,8 @@ export const Todolists: React.FC<TodolistType> = ({
                             changeTaskTitle(t.id, newValue, id)
                         }
                         return (
-                            <li className={t.isDone ? s.checkedTask : ""} key={t.id}>
-                                <input
-                                    type="checkbox"
+                            <div className={t.isDone ? s.checkedTask : ""} key={t.id}>
+                                <Checkbox
                                     checked={t.isDone}
                                     onChange={onChangeCheckedBox}
                                 />
@@ -81,16 +84,18 @@ export const Todolists: React.FC<TodolistType> = ({
                                     title={t.title}
                                     onChange={onChangeTitleTask}
                                 />
-                                <button onClick={onClickDeleteTasks}>X</button>
-                            </li>
+                                <IconButton onClick={onClickDeleteTasks}>
+                                    <Delete/>
+                                </IconButton>
+                            </div>
                         )
                     })
                 }
-            </ul>
+            </div>
             <div>
-                <button className={styleActiveFilterAll()} onClick={onClickAll}>All</button>
-                <button className={styleActiveFilterActive()} onClick={onClickActive}>Active</button>
-                <button className={styleActiveFilterCompleted()} onClick={onClickCompleted}>Completed</button>
+                <Button style={{marginTop: "13px"}} variant={styleActiveFilterAll()} onClick={onClickAll}>All</Button>
+                <Button style={{marginTop: "13px"}} color={'primary'} variant={styleActiveFilterActive()} onClick={onClickActive}>Active</Button>
+                <Button style={{marginTop: "13px"}} color={'secondary'} variant={styleActiveFilterCompleted()} onClick={onClickCompleted}>Completed</Button>
             </div>
         </div>
     );
