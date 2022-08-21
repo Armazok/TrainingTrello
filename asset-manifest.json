@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/TrainingTrello/static/css/main.65d373c4.chunk.css",
-    "main.js": "/TrainingTrello/static/js/main.438abced.chunk.js",
-    "main.js.map": "/TrainingTrello/static/js/main.438abced.chunk.js.map",
+    "main.css": "/TrainingTrello/static/css/main.d8857e41.chunk.css",
+    "main.js": "/TrainingTrello/static/js/main.fe8b0e2d.chunk.js",
+    "main.js.map": "/TrainingTrello/static/js/main.fe8b0e2d.chunk.js.map",
     "runtime-main.js": "/TrainingTrello/static/js/runtime-main.87fc4735.js",
     "runtime-main.js.map": "/TrainingTrello/static/js/runtime-main.87fc4735.js.map",
-    "static/js/2.751e2d48.chunk.js": "/TrainingTrello/static/js/2.751e2d48.chunk.js",
-    "static/js/2.751e2d48.chunk.js.map": "/TrainingTrello/static/js/2.751e2d48.chunk.js.map",
+    "static/js/2.597b37c4.chunk.js": "/TrainingTrello/static/js/2.597b37c4.chunk.js",
+    "static/js/2.597b37c4.chunk.js.map": "/TrainingTrello/static/js/2.597b37c4.chunk.js.map",
     "index.html": "/TrainingTrello/index.html",
-    "precache-manifest.ada82b7f8f4aa4182ba024064ee0c7d6.js": "/TrainingTrello/precache-manifest.ada82b7f8f4aa4182ba024064ee0c7d6.js",
+    "precache-manifest.227ea061782fc973013409525e25f97c.js": "/TrainingTrello/precache-manifest.227ea061782fc973013409525e25f97c.js",
     "service-worker.js": "/TrainingTrello/service-worker.js",
-    "static/css/main.65d373c4.chunk.css.map": "/TrainingTrello/static/css/main.65d373c4.chunk.css.map",
-    "static/js/2.751e2d48.chunk.js.LICENSE.txt": "/TrainingTrello/static/js/2.751e2d48.chunk.js.LICENSE.txt"
+    "static/css/main.d8857e41.chunk.css.map": "/TrainingTrello/static/css/main.d8857e41.chunk.css.map",
+    "static/js/2.597b37c4.chunk.js.LICENSE.txt": "/TrainingTrello/static/js/2.597b37c4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.87fc4735.js",
-    "static/js/2.751e2d48.chunk.js",
-    "static/css/main.65d373c4.chunk.css",
-    "static/js/main.438abced.chunk.js"
+    "static/js/2.597b37c4.chunk.js",
+    "static/css/main.d8857e41.chunk.css",
+    "static/js/main.fe8b0e2d.chunk.js"
   ]
 }
