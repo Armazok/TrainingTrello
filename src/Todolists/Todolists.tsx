@@ -87,7 +87,7 @@ export const Todolists: React.FC<TodolistType> = ({
                                 <IconButton onClick={onClickDeleteTasks}>
                                     <Delete/>
                                 </IconButton>
-                            </div>
+                             </div>
                         )
                     })
                 }

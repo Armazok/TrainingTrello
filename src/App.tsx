@@ -12,7 +12,7 @@ export type TasksType = {
     isDone: boolean
 }
 export type FilterType = "all" | "active" | "completed"
-type TodolistsType = {
+export type TodolistsType = {
     id: string
     title: string
     filter: FilterType
@@ -79,9 +79,7 @@ function App() {
     }
 
     function changeTaskTitle(taskId: string, newTitle: string, objTaskId: string) {
-        setObjTasks({
-            ...objTasks,
-            [objTaskId]: objTasks[objTaskId].map(t => t.id === taskId ? {...t, title: newTitle} : t)
+        setObjTasks({...objTasks, [objTaskId]: objTasks[objTaskId].map(t => t.id === taskId ? {...t, title: newTitle} : t)
         })
     }
 
