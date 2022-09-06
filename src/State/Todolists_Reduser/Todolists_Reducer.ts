@@ -1,4 +1,4 @@
-import {FilterType, TodolistsType} from "../App";
+import {FilterType, TodolistsType} from "../../App";
 import {v1} from "uuid";
 
 type ActionsTypes =
@@ -7,13 +7,14 @@ type ActionsTypes =
     ChangeTodolistTitle |
     ChangeTodolistFilter
 
-interface RemoveTodolist {
+export interface RemoveTodolist {
     type: 'REMOVE-TODOLIST'
     id: string
 }
 interface AddTodolists {
     type: 'ADD-TODOLIST'
     title: string
+    todolistId: string
 }
 export interface ChangeTodolistTitle {
     type: 'CHANGE-TODOLIST-TITLE'
@@ -32,8 +33,9 @@ export const TodolistsReduser = (state: TodolistsType[], action: ActionsTypes): 
             return state.filter(t => t.id !== action.id)
         }
         case 'ADD-TODOLIST': {
-            return [...state, {
-                id: v1(),
+            return [
+                ...state, {
+                id: action.todolistId,
                 title: action.title,
                 filter: "all"
             }]
@@ -50,14 +52,12 @@ export const TodolistsReduser = (state: TodolistsType[], action: ActionsTypes): 
     }
 }
 
-export const RemoveTodolistAC = (todolistsOne: string):RemoveTodolist => {
-  return {type: 'REMOVE-TODOLIST', id: todolistsOne}
+export const RemoveTodolistAC = (id: string):RemoveTodolist => {
+  return {type: 'REMOVE-TODOLIST', id}
 }
-
-export const AddTodolistAC = (newTodolistTitle: string):AddTodolists => {
-  return {type: 'ADD-TODOLIST', title: newTodolistTitle}
+export const AddTodolistAC = (title: string):AddTodolists => {
+  return {type: 'ADD-TODOLIST', title, todolistId: v1()}
 }
-
 export const ChangeTodolistTitleAc = (todolistsTwo: string,newTodolistTitle: string): ChangeTodolistTitle => {
   return {
       type: 'CHANGE-TODOLIST-TITLE',
@@ -65,7 +65,6 @@ export const ChangeTodolistTitleAc = (todolistsTwo: string,newTodolistTitle: str
       title: newTodolistTitle
   }
 }
-
 export const ChangeTodolistFilter = (todolistsTwo: string, newFilter: FilterType):ChangeTodolistFilter => {
   return {
       type: 'CHANGE-TODOLIST-FILTER',

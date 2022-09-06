@@ -17,7 +17,7 @@ export type TodolistsType = {
     title: string
     filter: FilterType
 }
-type objTasksType = {
+export type objTasksType = {
     [key: string]: TasksType[]
 }
 
