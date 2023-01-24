@@ -1,0 +1,10 @@
+.isDone {
+  text-decoration: line-through;
+  font-weight: bold;
+  color: #d81b60;
+  opacity: 0.5;
+}
+
+.notIsDone {
+  font-weight: bold;
+}
