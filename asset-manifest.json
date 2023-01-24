@@ -1,22 +1,15 @@
 {
   "files": {
-    "main.css": "/TrainingTrello/static/css/main.d8857e41.chunk.css",
-    "main.js": "/TrainingTrello/static/js/main.fe8b0e2d.chunk.js",
-    "main.js.map": "/TrainingTrello/static/js/main.fe8b0e2d.chunk.js.map",
-    "runtime-main.js": "/TrainingTrello/static/js/runtime-main.87fc4735.js",
-    "runtime-main.js.map": "/TrainingTrello/static/js/runtime-main.87fc4735.js.map",
-    "static/js/2.597b37c4.chunk.js": "/TrainingTrello/static/js/2.597b37c4.chunk.js",
-    "static/js/2.597b37c4.chunk.js.map": "/TrainingTrello/static/js/2.597b37c4.chunk.js.map",
-    "index.html": "/TrainingTrello/index.html",
-    "precache-manifest.227ea061782fc973013409525e25f97c.js": "/TrainingTrello/precache-manifest.227ea061782fc973013409525e25f97c.js",
-    "service-worker.js": "/TrainingTrello/service-worker.js",
-    "static/css/main.d8857e41.chunk.css.map": "/TrainingTrello/static/css/main.d8857e41.chunk.css.map",
-    "static/js/2.597b37c4.chunk.js.LICENSE.txt": "/TrainingTrello/static/js/2.597b37c4.chunk.js.LICENSE.txt"
+    "main.css": "/Armazok/TrainingTrello/static/css/main.af79e9fb.css",
+    "main.js": "/Armazok/TrainingTrello/static/js/main.151ad068.js",
+    "static/js/787.97a945da.chunk.js": "/Armazok/TrainingTrello/static/js/787.97a945da.chunk.js",
+    "index.html": "/Armazok/TrainingTrello/index.html",
+    "main.af79e9fb.css.map": "/Armazok/TrainingTrello/static/css/main.af79e9fb.css.map",
+    "main.151ad068.js.map": "/Armazok/TrainingTrello/static/js/main.151ad068.js.map",
+    "787.97a945da.chunk.js.map": "/Armazok/TrainingTrello/static/js/787.97a945da.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.87fc4735.js",
-    "static/js/2.597b37c4.chunk.js",
-    "static/css/main.d8857e41.chunk.css",
-    "static/js/main.fe8b0e2d.chunk.js"
+    "static/css/main.af79e9fb.css",
+    "static/js/main.151ad068.js"
   ]
 }
