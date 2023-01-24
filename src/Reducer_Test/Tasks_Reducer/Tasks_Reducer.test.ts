@@ -1,13 +1,13 @@
 import {objTasksType} from "../../App";
 import {
-    AddTasksAC,
+    addTasksAC,
     addTodolistsAC,
-    changeTaskStatus,
-    changeTaskTitle,
+    changeTaskStatusAC,
+    changeTaskTitleAC,
     removeTasksAC,
     TasksReduser
 } from "./Tasks_Reducer";
-import {RemoveTodolistAC} from "../Todolists_Reduser/Todolists_Reducer";
+import {removeTodolistAC} from "../Todolists_Reducer/Todolists_Reducer";
 
 
 test('correct task should be deleted from correct array', () => {
@@ -51,7 +51,7 @@ test('correct task should be add task ', () => {
         ],
     }
 
-    const action = AddTasksAC('juice', "todolistsTwo")
+    const action = addTasksAC('juice', "todolistsTwo")
     const endState = TasksReduser(startState, action)
 
     expect(endState['todolistsOne'].length).toBe(3)
@@ -76,7 +76,7 @@ test('checked status of specified task should be changed', () => {
         ],
     }
 
-    const action = changeTaskStatus('2',false, "todolistsTwo")
+    const action = changeTaskStatusAC('2',false, "todolistsTwo")
     const endState = TasksReduser(startState, action)
 
     expect(endState['todolistsTwo'][1].isDone).toBe(false);
@@ -98,7 +98,7 @@ test('title of specified task should be changed', () => {
         ],
     }
 
-    const action = changeTaskTitle('2','MilkyWay', "todolistsTwo")
+    const action = changeTaskTitleAC('2','MilkyWay', "todolistsTwo")
     const endState = TasksReduser(startState, action)
 
     expect(endState['todolistsTwo'][1].title).toBe('MilkyWay');
@@ -148,7 +148,7 @@ test('property with todolistId should be deleted', () => {
         ],
     }
 
-    const action = RemoveTodolistAC('todolistsTwo')
+    const action = removeTodolistAC('todolistsTwo')
 
     const endState = TasksReduser(startState, action)
 

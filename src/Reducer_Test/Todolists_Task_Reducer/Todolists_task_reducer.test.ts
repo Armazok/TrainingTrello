@@ -1,12 +1,12 @@
 import {objTasksType, TodolistsType} from "../../App";
-import {TasksReduser} from "../Tasks_Reduser/Tasks_Reducer";
-import {AddTodolistAC, TodolistsReduser} from "../Todolists_Reduser/Todolists_Reducer";
+import {TasksReduser} from "../Tasks_Reducer/Tasks_Reducer";
+import {addTodolistAC, TodolistsReduser} from "../Todolists_Reducer/Todolists_Reducer";
 
 test('ids should eb equals', () => {
     const startTaskState: objTasksType = {};
     const startTodolistsState: TodolistsType[] = [];
 
-    const action = AddTodolistAC('title no matter')
+    const action = addTodolistAC('title no matter')
 
     const endTaskState = TasksReduser(startTaskState, action)
     const endTodolistState = TodolistsReduser(startTodolistsState, action)

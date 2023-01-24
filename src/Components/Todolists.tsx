@@ -49,7 +49,7 @@ export const Todolists: React.FC<TodolistType> = ({
     }
 
     const replacementTitleTodolists = (newTitleTodolists: string) => {
-        changeTitleTodolists(newTitleTodolists, id)
+        changeTitleTodolists(id, newTitleTodolists)
     }
 
     return (
@@ -67,7 +67,7 @@ export const Todolists: React.FC<TodolistType> = ({
             <div>
                 {
                     tasks.map((t) => {
-                        const onClickDeleteTasks = () => deleteTasks(t.id, id)
+                            const onClickDeleteTasks = () => deleteTasks(t.id, id)
                         const onChangeCheckedBox = (e: ChangeEvent<HTMLInputElement>) => {
                             checkedTask(t.id, e.currentTarget.checked, id)
                         }

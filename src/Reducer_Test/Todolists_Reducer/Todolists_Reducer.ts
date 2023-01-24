@@ -34,11 +34,11 @@ export const TodolistsReduser = (state: TodolistsType[], action: ActionsTypes): 
         }
         case 'ADD-TODOLIST': {
             return [
-                ...state, {
+                {
                 id: action.todolistId,
                 title: action.title,
                 filter: "all"
-            }]
+            }, ...state]
         }
         case 'CHANGE-TODOLIST-TITLE': {
             return state.map(s => s.id === action.id ? {...s, title: action.title} : s)
@@ -52,20 +52,20 @@ export const TodolistsReduser = (state: TodolistsType[], action: ActionsTypes): 
     }
 }
 
-export const RemoveTodolistAC = (id: string):RemoveTodolist => {
+export const removeTodolistAC = (id: string):RemoveTodolist => {
   return {type: 'REMOVE-TODOLIST', id}
 }
-export const AddTodolistAC = (title: string):AddTodolists => {
+export const addTodolistAC = (title: string):AddTodolists => {
   return {type: 'ADD-TODOLIST', title, todolistId: v1()}
 }
-export const ChangeTodolistTitleAc = (todolistsTwo: string,newTodolistTitle: string): ChangeTodolistTitle => {
+export const changeTodolistTitleAC = (todolistsTwo: string, newTodolistTitle: string): ChangeTodolistTitle => {
   return {
       type: 'CHANGE-TODOLIST-TITLE',
       id: todolistsTwo,
       title: newTodolistTitle
   }
 }
-export const ChangeTodolistFilter = (todolistsTwo: string, newFilter: FilterType):ChangeTodolistFilter => {
+export const changeTodolistFilterAC = (todolistsTwo: string, newFilter: FilterType):ChangeTodolistFilter => {
   return {
       type: 'CHANGE-TODOLIST-FILTER',
       id: todolistsTwo,

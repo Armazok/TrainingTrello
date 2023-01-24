@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Todolists} from "./Todolists/Todolists";
+import {Todolists} from "./Components/Todolists";
 import {v1} from "uuid";
-import {AddItemForm} from "./Todolists/AddItemForm";
+import {AddItemForm} from "./Components/AddItemForm";
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@mui/material";
 import {Menu} from "@mui/icons-material";
 

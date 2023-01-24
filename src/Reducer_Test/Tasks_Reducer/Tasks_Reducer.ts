@@ -1,6 +1,6 @@
 import {objTasksType} from "../../App";
 import {v1} from "uuid";
-import {RemoveTodolist} from "../Todolists_Reduser/Todolists_Reducer";
+import {RemoveTodolist} from "../Todolists_Reducer/Todolists_Reducer";
 
 type ActionsTypes = RemoveTasks | AddTask | ChangeTaskStatus | ChangeTaskTitle | AddTodolists | RemoveTodolist
 
@@ -81,16 +81,15 @@ export const TasksReduser = (state: objTasksType, action: ActionsTypes): objTask
 export const removeTasksAC = (taskId: string, todolistId: string): RemoveTasks => {
     return {type: 'REMOVE-TASK', taskId, todolistId}
 }
-export const AddTasksAC = (title: string, todolistId: string): AddTask => {
+export const addTasksAC = (title: string, todolistId: string): AddTask => {
     return {type: 'ADD_TASK', todolistId, title}
 }
-export const changeTaskStatus = (taskId: string, isDone: boolean, todolistsTwo: string): ChangeTaskStatus => {
+export const changeTaskStatusAC = (taskId: string, isDone: boolean, todolistsTwo: string): ChangeTaskStatus => {
     return {type: "CHANGE-TASK-STATUS", taskId, isDone, todolistsTwo}
 }
-export const changeTaskTitle = (taskId: string, title: string, todolistsTwo: string) : ChangeTaskTitle => {
+export const changeTaskTitleAC = (taskId: string, title: string, todolistsTwo: string) : ChangeTaskTitle => {
     return { type: "CHANGE-TASK-TITLE", taskId, title, todolistsTwo}
 }
-
 export const addTodolistsAC = (title: string): AddTodolists => {
     return {type: "ADD-TODOLIST", title, todolistId: v1()}
 }
